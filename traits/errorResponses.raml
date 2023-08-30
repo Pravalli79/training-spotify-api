@@ -1,0 +1,24 @@
+#%RAML 1.0 Trait
+responses:
+  400:
+    body:
+      type: object
+      example: {
+        error: "bad request",
+        success: false,   
+      }
+  401:
+    body:
+      type: object
+      example: {
+        error: "unauthorized error",
+        success: false,
+      }
+  500:
+    body:
+      type: object
+      example: {
+        error: "internal server error",
+        success: false,
+        timestamp: "2023-08-01T10:38:00Z"
+      }

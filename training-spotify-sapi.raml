@@ -1,0 +1,44 @@
+#%RAML 1.0
+title: Spotify API
+description: Spotify music with songs, artists and albums
+mediaType: [application/json]
+version: v1
+protocols: [HTTP, HTTPS]
+baseUri: https://api.spotify.com/{version}
+securedBy: [fragment.auth, fragment.credentials]
+
+uses:
+  fragment: exchange_modules/f91c34f7-5a46-4579-9212-43065babc261/common-fragments/1.0.1/common-fragment.raml
+
+types:
+ album: !include dataTypes/albumData.raml
+ artist: !include dataTypes/artistData.raml
+ song: !include dataTypes/songData.raml
+
+/health:
+  type:
+    fragment.health
+
+/songs:
+  is: [fragment.error]
+  type: 
+    fragment.source:
+       endpoint: song[]
+
+  /{songID}:
+    is: [fragment.error]
+    type:
+      fragment.source:
+       endpoint: song
+
+/artists:
+  is: [fragment.error]
+  type:
+    fragment.source:
+       endpoint: artist
+          
+/albums:
+  is: [fragment.error]
+  type:
+    fragment.source:
+       endpoint: album

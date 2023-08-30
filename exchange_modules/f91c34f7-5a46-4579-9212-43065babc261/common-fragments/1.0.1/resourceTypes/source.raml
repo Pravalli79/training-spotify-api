@@ -1,0 +1,17 @@
+#%RAML 1.0 ResourceType
+get:
+  responses:
+    200:
+      body:
+        type: <<endpoint>>
+
+post:
+  body:
+   type: <<endpoint>> []
+  responses:
+      201:
+        body:
+          type: object
+          example: {
+            status : "created"
+            }

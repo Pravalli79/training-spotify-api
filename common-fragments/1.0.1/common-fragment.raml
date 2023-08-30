@@ -1,0 +1,13 @@
+#%RAML 1.0 Library
+usage: This fragment is to centralize the security schemes and traits for invlaid credentials
+
+securitySchemes:
+  auth: !include security schemes/basic-auth.raml
+  credentials: !include security schemes/credentials.raml
+
+traits:
+  error: !include traits/errorResponses.raml
+
+resourceTypes:
+  health: !include resourceTypes/health.raml
+  source: !include resourceTypes/source.raml
